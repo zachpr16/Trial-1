@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ESL Job Vocabulary Flashcards</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      text-align: center;
+    }
+    .flashcard {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    audio {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>ESL Job Vocabulary Flashcards</h2>
+
+  <div class="flashcard">
+    <p id="vocabWord"></p>
+    <p id="vocabDefinition"></p>
+    <p id="vocabSentence"></p>
+    <audio id="audio" controls>
+      <source id="audioSource" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <button id="prevBtn" onclick="showPrev()">Previous</button>
+  <button id="nextBtn" onclick="showNext()">Next</button>
+
+  <script>
+    const vocabulary = [
+      { 
+        word: "Ability", 
+        definition: "Skill or talent.", 
+        sentence: "She has the ability to solve difficult problems.",
+        audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" // Example link for the audio
+      },
+      { 
+        word: "Absence", 
+        definition: "Missing or not being there.", 
+        sentence: "Her absence from the meeting was noticed by everyone.",
+        audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+      },
+      { 
+        word: "Academic", 
+        definition: "Related to school or education.", 
+        sentence: "He is an academic who loves teaching history.",
+        audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+      },
+      { 
+        word: "Accommodations", 
+        definition: "Places or conditions to stay or work.", 
+        sentence: "The hotel provided excellent accommodations for the guests.",
+        audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+      },
+      { 
+        word: "Account", 
+        definition: "A place to save money.", 
+        sentence: "She opened a new account at the bank to save for her trip.",
+        audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
+      },
+      { 
+        word: "Accurate", 
+        definition: "Correct and exact.", 
+        sentence: "The report needs to be accurate to avoid mistakes.",
+        audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
+      },
+      { 
+        word: "Address", 
+        definition: "The location where someone lives or works.", 
+        sentence: "Can you please provide your home address for delivery?",
+        audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3"
+      },
+      { 
+        word: "Advise", 
+        definition: "To give suggestions or advice.", 
+        sentence: "The teacher will advise the students on their project work.",
+        audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"
+      },
+      { 
+        word: "Agency", 
+        definition: "An organization that provides services.", 
+        sentence: "She works for a travel agency that helps people book vacations.",
+        audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3"
+      },
+      { 
+        word: "Analysis", 
+        definition: "The process of examining something carefully.", 
+        sentence: "The analysis of the data revealed important trends.",
+        audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3"
+      }
+    ];
+
+    let currentIndex = 0;
+
+    function updateFlashcard() {
+      const vocabWord = document.getElementById("vocabWord");
+      const vocabDefinition = document.getElementById("vocabDefinition");
+      const vocabSentence = document.getElementById("vocabSentence");
+      const audio = document.getElementById("audio");
+      const audioSource = document.getElementById("audioSource");
+
+      vocabWord.textContent = vocabulary[currentIndex].word;
+      vocabDefinition.textContent = vocabulary[currentIndex].definition;
+      vocabSentence.textContent = vocabulary[currentIndex].sentence;
+      audioSource.src = vocabulary[currentIndex].audio;
+      audio.load(); // Reload the audio to ensure it plays correctly
+
+      // Disable/Enable buttons based on the current index
+      document.getElementById("prevBtn").disabled = currentIndex === 0;
+      document.getElementById("nextBtn").disabled = currentIndex === vocabulary.length - 1;
+    }
+
+    function showPrev() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateFlashcard();
+      }
+    }
+
+    function showNext() {
+      if (currentIndex < vocabulary.length - 1) {
+        currentIndex++;
+        updateFlashcard();
+      }
+    }
+
+    // Initial flashcard
+    updateFlashcard();
+  </script>
+
+</body>
+</html>
+
+
+
+   
